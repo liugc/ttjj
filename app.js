@@ -84,4 +84,4 @@ if (process.env.FEISHU && process.env.CODE) {
     .catch(() => {});
 }
 
-console.log("hello");
+console.log(process);
