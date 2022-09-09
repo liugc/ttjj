@@ -14,8 +14,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16
-    - run: |
-      node app.js
-    env:
-      FEISHU: ${{ secrets.FEISHU }}
-      CODE: ${{ secrets.CODE }}
+    - run: node app.js
+      env:
+        FEISHU: ${{ secrets.FEISHU }}
+        CODE: ${{ secrets.CODE }}
