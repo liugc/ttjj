@@ -84,4 +84,4 @@ const getFund = (code) => {
 //     .catch(() => {});
 // }
 
-console.log(process.env);
+console.log(process.env.FEISHU);
