@@ -68,6 +68,7 @@ const getFund = (code) => {
 };
 
 if (process.env.FEISHU && process.env.CODE) {
+  console.log("run");
   let promiseArr = [];
   process.env.CODE.split(",").forEach((item) => {
     item = item.replace(/^\s+|\s$+/, "");
@@ -82,3 +83,5 @@ if (process.env.FEISHU && process.env.CODE) {
     })
     .catch(() => {});
 }
+
+console.log("hello");
