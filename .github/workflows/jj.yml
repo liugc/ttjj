@@ -8,13 +8,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    env:
+      FEISHU: ${{ secrets.FEISHU }}
+      CODE: ${{ secrets.CODE }}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
       with:
         node-version: 16
     - run: node app.js
-      env:
-        FEISHU: ${{ secrets.FEISHU }}
-        CODE: ${{ secrets.CODE }}
