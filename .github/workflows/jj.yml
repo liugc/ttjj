@@ -1,8 +1,8 @@
 name: TTJJ nofity
 
 on:
-  watch:
-    types: [started]
+  schedule:
+    - cron: '30 15 * * 1-5'
 
 jobs:
   build:
