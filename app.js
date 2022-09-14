@@ -67,21 +67,18 @@ const getFund = (code) => {
   });
 };
 
-// if (process.env.FEISHU && process.env.CODE) {
-//   console.log("run");
-//   let promiseArr = [];
-//   process.env.CODE.split(",").forEach((item) => {
-//     item = item.replace(/^\s+|\s$+/, "");
-//     promiseArr.push(getFund(item));
-//   });
-//   Promise.all(promiseArr)
-//     .then((data) => {
-//       data = data.map((item) => {
-//         return `${item.title} -> ${item.value} -> ${item.percent}`;
-//       });
-//       notify(data.join("\n"));
-//     })
-//     .catch(() => {});
-// }
-
-console.log(process.env.FEISHU);
+if (process.env.FEISHU && process.env.CODE) {
+  let promiseArr = [];
+  process.env.CODE.split(",").forEach((item) => {
+    item = item.replace(/^\s+|\s+$/, "");
+    promiseArr.push(getFund(item));
+  });
+  Promise.all(promiseArr)
+    .then((data) => {
+      data = data.map((item) => {
+        return `${item.title} -> ${item.value} -> ${item.percent}`;
+      });
+      notify(data.join("\n"));
+    })
+    .catch(() => {});
+}
