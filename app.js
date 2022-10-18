@@ -84,7 +84,6 @@ const getFund = (code) => {
   });
 };
 
-console.log(process.env);
 if (process.env.CODE) {
   let promiseArr = [];
   process.env.CODE.split(",").forEach((item) => {
