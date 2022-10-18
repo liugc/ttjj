@@ -3,8 +3,9 @@ const https = require("https");
 
 const notify = (text) => {
   text = "啊成，基金小助手提醒您：\n" + text;
+  let req;
   if (process.env.FEISHU) {
-    const req = https.request(process.env.FEISHU, {
+    req = https.request(process.env.FEISHU, {
       method: "post",
     });
     req.write(
@@ -18,7 +19,8 @@ const notify = (text) => {
     req.end();
   }
   if (process.env.DINGDING) {
-    const req = https.request(process.env.DINGDING, {
+    console.log("dingding");
+    req = https.request(process.env.DINGDING, {
       method: "post",
     });
     req.write(
