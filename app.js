@@ -2,6 +2,7 @@ const http = require("http");
 const https = require("https");
 
 const notify = (text) => {
+  console.log(text);
   if (process.env.FEISHU) {
     const req = https.request(process.env.FEISHU, {
       method: "post",
@@ -83,6 +84,7 @@ const getFund = (code) => {
   });
 };
 
+console.log(process.env);
 if (process.env.CODE) {
   let promiseArr = [];
   process.env.CODE.split(",").forEach((item) => {
