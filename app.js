@@ -2,7 +2,7 @@ const http = require("http");
 const https = require("https");
 
 const notify = (text) => {
-  console.log(text);
+  text = "啊成，基金小助手提醒您：\n" + text;
   if (process.env.FEISHU) {
     const req = https.request(process.env.FEISHU, {
       method: "post",
