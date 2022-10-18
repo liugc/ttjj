@@ -16,4 +16,5 @@ jobs:
     - run: npm run start
     env:
       FEISHU: ${{ secrets.FEISHU }}
+      DINGDING: ${{ secrets.DINGDING }}
       CODE: ${{ secrets.CODE }}

@@ -2,18 +2,34 @@ const http = require("http");
 const https = require("https");
 
 const notify = (text) => {
-  const req = https.request(process.env.FEISHU, {
-    method: "post",
-  });
-  req.write(
-    JSON.stringify({
-      msg_type: "text",
-      content: {
-        text,
-      },
-    })
-  );
-  req.end();
+  if (process.env.FEISHU) {
+    const req = https.request(process.env.FEISHU, {
+      method: "post",
+    });
+    req.write(
+      JSON.stringify({
+        msg_type: "text",
+        content: {
+          text,
+        },
+      })
+    );
+    req.end();
+  }
+  if (process.env.DINGDING) {
+    const req = https.request(process.env.DINGDING, {
+      method: "post",
+    });
+    req.write(
+      JSON.stringify({
+        text: {
+          content: text
+        },
+        msgtype: "text",
+      })
+    );
+    req.end();
+  }
 };
 
 const getFund = (code) => {
@@ -67,7 +83,7 @@ const getFund = (code) => {
   });
 };
 
-if (process.env.FEISHU && process.env.CODE) {
+if (process.env.CODE) {
   let promiseArr = [];
   process.env.CODE.split(",").forEach((item) => {
     item = item.replace(/^\s+|\s+$/, "");
