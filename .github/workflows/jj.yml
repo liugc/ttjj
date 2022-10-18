@@ -1,6 +1,7 @@
 name: TTJJ nofity
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '30 07 * * 1-5'
 
