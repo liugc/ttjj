@@ -22,6 +22,14 @@ const notify = (text) => {
     console.log("dingding");
     req = https.request(process.env.DINGDING, {
       method: "post",
+    }, (res) => {
+      let str = "";
+      res.on("data", (chunk) => {
+        str += chunk;
+      });
+      res.on("end", () => {
+        console.log(str);
+      });
     });
     req.write(
       JSON.stringify({
