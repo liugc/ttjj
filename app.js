@@ -22,25 +22,12 @@ const notify = (text) => {
     req.end();
   }
   if (process.env.DINGDING) {
-    console.log("dingding");
-    req = https.request(
-      process.env.DINGDING,
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
+    req = https.request(process.env.DINGDING, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
       },
-      (res) => {
-        let str = "";
-        res.on("data", (chunk) => {
-          str += chunk;
-        });
-        res.on("end", () => {
-          console.log(str);
-        });
-      }
-    );
+    });
     req.write(
       JSON.stringify({
         text: {
